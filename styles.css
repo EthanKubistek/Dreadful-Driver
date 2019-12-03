@@ -1,3 +1,29 @@
 .hide {
   display: none;
 }
+ body {
+   display: flex;
+   flex-direction: column;
+   background-color: green;
+   justify-content: center;
+   align-items: center;
+ }
+h1 {
+  text-align: center;
+  font-size: 9em;
+  font-family: sans-serif;
+}
+button {
+  background-color: red;
+  color: white;
+  display: block;
+  margin:auto;
+  font-size: 3em;
+  border-radius: 30%;
+  padding: 1em;
+}
+.car {
+  background-color: white;
+  height: 7em;
+  width: 5em;
+}
