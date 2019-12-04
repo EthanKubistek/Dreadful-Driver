@@ -26,4 +26,6 @@ button {
   background-color: white;
   height: 7em;
   width: 5em;
+  position: absolute;
+  bottom: 2em;
 }

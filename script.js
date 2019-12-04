@@ -8,8 +8,24 @@ const deathScreen = document.querySelector("deathScreen");
 startScreen.addEventListener("click",start);
 
 function start(){
-  
+
+let player = {
+  speed: 5
+};
+
+function start(){
+  startScreen.classList.add("hide");
+  gameArea.classList.remove("hide");
+  player.start=true;
+  window.requestAnimationFrame(playGame);
+  let car = document.createElement("div");
+  car.innerText= "car";
+  car.setAttribute("class","car");
+  gameArea.appendChild(car);
 }
+
+
+
 
 
 
