@@ -5,11 +5,10 @@ const startScreen = document.querySelector("startScreen");
 const gameArea = document.querySelector("gameArea");
 const deathScreen = document.querySelector("deathScreen");
 
-const button = document.querySelector("button");
-button.addEventListener("click",start);
+startScreen.addEventListener("click",start);
 
 function start(){
-
+  
 }
 
 
@@ -93,3 +92,6 @@ function start(){
 
 
 /* 7 rest the game*/
+
+
+    
