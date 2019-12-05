@@ -34,6 +34,7 @@ button {
   padding: 1em;
 }
 .car {
+  position: absolute;
   background-color: white;
   height: 7em;
   width: 5em;
@@ -49,4 +50,26 @@ button {
   width: 40em;
   height: 100%;
   margin: auto;
-        }
+}
+.line {
+  position: absolute;
+  height: 100px;
+  width: 10px;
+  left: 58%;
+  background-color: white;
+}
+.line2 {
+  position: absolute;
+  height: 100px;
+  width: 10px;
+  left: 42%;
+  background-color: white;
+}
+
+.potholes {
+  position: absolute;
+  height: 4em;
+  width: 4em;
+  border: 3px solid darkgrey;
+  border-radius: 50%;
+}
