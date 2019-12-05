@@ -3,7 +3,7 @@
 }
  body {
    margin: auto;
-   height: 65em;
+   height: 60em;
    width: 90%;
    border: 5px solid black;
    display: flex;
@@ -42,6 +42,7 @@ button {
   bottom: 2em;
 }
 .gameArea {
+  position: absolute;
   justify-content: center;
   margin: auto;
   border-left: 5px solid lightgrey;
@@ -55,14 +56,14 @@ button {
   position: absolute;
   height: 100px;
   width: 10px;
-  left: 58%;
+  left: 66%;
   background-color: white;
 }
 .line2 {
   position: absolute;
   height: 100px;
   width: 10px;
-  left: 42%;
+  left: 33%;
   background-color: white;
 }
 
