@@ -26,7 +26,6 @@ document.addEventListener("keyup", pressOff);
 function playGame() {
     let car = document.querySelector(".car");
     let road = gameArea.getBoundingClientRect();
-    player.x = 600;
     if(player.start) {
       console.log(road, player)
         if (keys.ArrowUp && player.y > road.top){
@@ -67,7 +66,7 @@ function start(){
   car.innerText= "car";
   car.setAttribute("class","car");
   gameArea.appendChild(car);
-  player.x = 600;
+  player.x = 800;
   player.y = car.offsetTop;
 }
 
