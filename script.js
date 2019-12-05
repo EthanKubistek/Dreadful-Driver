@@ -35,7 +35,7 @@ function playGame() {
         } if (keys.ArrowLeft && player.x > 502) {
             player.x -= player.speed;
         } if (keys.ArrowRight && player.x < road.width + 415){
-        
+
             player.x += player.speed;
     }
         car.style.left = player.x + "px";
@@ -61,13 +61,34 @@ function start(){
   startScreen.classList.add("hide");
   gameArea.classList.remove("hide");
   player.start=true;
+  for(let x=0; x<10; x++){
+    let div = document.createElement('div');
+    div.classList.add("line");
+    div.y= x*150;
+    div.style.top = (x*150) + "px";
+    gameArea.appendChild(div);
+  }
+  for(let x=0; x<10; x++){
+    let div = document.createElement('div');
+    div.classList.add("line2");
+    div.y= x*150;
+    div.style.top = (x*150) + "px";
+    gameArea.appendChild(div);
+  }
   window.requestAnimationFrame(playGame);
   let car = document.createElement("div");
   car.innerText= "car";
   car.setAttribute("class","car");
   gameArea.appendChild(car);
-  player.x = 600;
+  player.x = 750;
   player.y = car.offsetTop;
+  for(let x=0; x<10; x++){
+    let div = document.createElement('div');
+    div.classList.add("potholes");
+    div.y= x*150;
+    div.style.top = (x*150) + "px";
+    gameArea.appendChild(div);
+  }
 }
 
 
