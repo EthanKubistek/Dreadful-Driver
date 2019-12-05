@@ -1,9 +1,9 @@
 
 /* story 1 seeing car and obstacles on the road*/
 const mileadge = document.querySelector(".mileadge");
-const startScreen = document.querySelector("startScreen");
-const gameArea = document.querySelector("gameArea");
-const deathScreen = document.querySelector("deathScreen");
+const startScreen = document.querySelector(".startScreen");
+const gameArea = document.querySelector(".gameArea");
+const deathScreen = document.querySelector(".deathScreen");
 
 const button = document.querySelector("Button")
 button.addEventListener("click",start);
@@ -31,7 +31,7 @@ function playGame() {
         if (keys.ArrowLeft && player.x > 0) {
             player.x -= player.speed;
         }
-        if (key.ArrowRight && player.x < road.width)
+        if (keys.ArrowRight && player.x < road.width)
             player.x += player.speed;
     }
         car.getElementsByClassName.left = player.x + 'px';
