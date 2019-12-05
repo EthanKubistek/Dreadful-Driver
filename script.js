@@ -12,11 +12,14 @@ button.addEventListener("click",start);
 
 let player = {
   speed: 5
+  ,x:0
+  ,y:0
 };
 let keys = {
-    ArrowRight: false
-        ,ArrowLeft: false
-        
+    ArrowUp: false,
+    ArrowDown: false,
+    ArrowRight: false,
+    ArrowLeft: false
 };
 
 document.addEventListener("keydown", pressOn);
@@ -25,29 +28,33 @@ document.addEventListener("keyup", pressOff);
 function playGame() {
     let car = document.querySelector(".car");
     let road = gameArea.getBoundingClientRect();
-    console.log(road);
-    console.log(player.x);
     if(player.start) {
-        if (keys.ArrowLeft && player.x > 0) {
+      console.log(road, player)
+        if (keys.ArrowUp && player.y > road.top){
+          player.y -= player.speed;
+        } if (keys.ArrowDown && player.y < road.bottom){
+          player.y += player.speed;
+        } if (keys.ArrowLeft && player.x > 502) {
             player.x -= player.speed;
-        }
-        if (keys.ArrowRight && player.x < road.width)
+        } if (keys.ArrowRight && player.x < road.width + 415){
+        
             player.x += player.speed;
     }
-        car.getElementsByClassName.left = player.x + 'px';
+        car.style.left = player.x + "px";
+        car.style.top = player.y + "px";
         window.requestAnimationFrame(playGame);
     }
-
+}
 
 function pressOn(e) {
-    e.perventDefault();
+    e.preventDefault();
     keys[e.key] = true;
     console.log(keys);
 }
 
 
 function pressOff(e) {
-    e.perventDefault();
+    e.preventDefault();
     keys[e.key] = false;
     console.log(keys);
 }
@@ -61,6 +68,8 @@ function start(){
   car.innerText= "car";
   car.setAttribute("class","car");
   gameArea.appendChild(car);
+  player.x = car.offsetLeft;
+  player.y = car.offsetTop;
 }
 
 
@@ -147,6 +156,3 @@ function start(){
 
 
 /* 7 rest the game*/
-
-
-    

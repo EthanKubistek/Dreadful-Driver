@@ -2,11 +2,19 @@
   display: none;
 }
  body {
+   margin: auto;
+   height: 65em;
+   width: 100em;
+   border: 5px solid black;
    display: flex;
    flex-direction: column;
    background-color: green;
    justify-content: center;
    align-items: center;
+ }
+ .game {
+   height: 100%;
+   width: 100%;
  }
 h1 {
   text-align: center;
@@ -29,3 +37,11 @@ button {
   position: absolute;
   bottom: 2em;
 }
+.gameArea {
+            border-left: 5px solid lightgrey;
+            border-right: 5px solid lightgrey;
+            background-color: black;
+            width: 40em;
+            height: 100%;
+            margin: auto;
+        }
