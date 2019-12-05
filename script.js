@@ -12,8 +12,6 @@ button.addEventListener("click",start);
 
 let player = {
   speed: 5
-  ,x:0
-  ,y:0
 };
 let keys = {
     ArrowUp: false,
@@ -67,7 +65,7 @@ function start(){
   car.innerText= "car";
   car.setAttribute("class","car");
   gameArea.appendChild(car);
-  player.x = car.offsetLeft;
+  player.x = 600;
   player.y = car.offsetTop;
 }
 
