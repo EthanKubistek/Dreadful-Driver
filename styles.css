@@ -4,7 +4,7 @@
  body {
    margin: auto;
    height: 65em;
-   width: 100em;
+   width: 90%;
    border: 5px solid black;
    display: flex;
    flex-direction: column;
@@ -13,6 +13,9 @@
    align-items: center;
  }
  .game {
+   display: flex;
+   justify-content: center;
+   margin: auto;
    height: 100%;
    width: 100%;
  }
@@ -38,10 +41,12 @@ button {
   bottom: 2em;
 }
 .gameArea {
-            border-left: 5px solid lightgrey;
-            border-right: 5px solid lightgrey;
-            background-color: black;
-            width: 40em;
-            height: 100%;
-            margin: auto;
+  justify-content: center;
+  margin: auto;
+  border-left: 5px solid lightgrey;
+  border-right: 5px solid lightgrey;
+  background-color: black;
+  width: 40em;
+  height: 100%;
+  margin: auto;
         }
