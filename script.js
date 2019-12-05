@@ -5,9 +5,8 @@ const startScreen = document.querySelector("startScreen");
 const gameArea = document.querySelector("gameArea");
 const deathScreen = document.querySelector("deathScreen");
 
-startScreen.addEventListener("click",start);
-
-function start(){
+const button = document.querySelector("button");
+button.addEventListener("click",start);
 
 let player = {
   speed: 5
@@ -108,6 +107,3 @@ function start(){
 
 
 /* 7 rest the game*/
-
-
-    
