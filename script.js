@@ -22,9 +22,44 @@ let keys = {
 
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
+function moveLines() {
+      let lines = document.querySelectorAll(".line");
+      lines.forEach(function (item) {
+      console.log(item.y);
+      if (item.y >= 1000) {
+          item.y -= 1000;
+      }
+      item.y += player.speed;
+      item.style.top = item.y + "px";
+      })
+      let lines2 = document.querySelectorAll(".line2");
+      lines2.forEach(function (item) {
+      console.log(item.y);
+      if (item.y >= 1000) {
+          item.y -= 1000;
+      }
+      item.y += player.speed;
+      item.style.top = item.y + "px";
+    });
+  }
+
+  function movePotholes() {
+        let potholes = document.querySelectorAll(".potholes");
+        potholes.forEach(function (item) {
+        console.log(item.y);
+        if (item.y >= 1500) {
+            item.y -= 1500;
+        }
+        item.y += player.speed;
+        item.style.top = item.y + "px";
+      });
+  }
+
 
 function playGame() {
     let car = document.querySelector(".car");
+    moveLines();
+    movePotholes();
     let road = gameArea.getBoundingClientRect();
     if(player.start) {
       console.log(road, player)

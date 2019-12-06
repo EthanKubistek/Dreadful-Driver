@@ -40,6 +40,7 @@ button {
   width: 5em;
   position: absolute;
   bottom: 2em;
+  z-index: 1;
 }
 .gameArea {
   position: absolute;
@@ -54,14 +55,14 @@ button {
 }
 .line {
   position: absolute;
-  height: 100px;
+  height: 75px;
   width: 10px;
   left: 66%;
   background-color: white;
 }
 .line2 {
   position: absolute;
-  height: 100px;
+  height: 75px;
   width: 10px;
   left: 33%;
   background-color: white;
@@ -69,8 +70,10 @@ button {
 
 .potholes {
   position: absolute;
-  height: 4em;
-  width: 4em;
+  left: 10%;
+  height: 7em;
+  width: 7em;
+  background: radial-gradient(#000101, #9A9c9c);
   border: 3px solid darkgrey;
   border-radius: 50%;
 }
