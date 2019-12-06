@@ -67,7 +67,7 @@ function start(){
     div.style.top = (x*150) + "px";
     gameArea.appendChild(div);
   }
-  for(let x=0; x<7; x++){
+  for (let x=0; x<7; x++){
     let div = document.createElement('div');
     div.classList.add("line2");
     div.y= x*150;
@@ -89,6 +89,7 @@ function start(){
     gameArea.appendChild(div);
   }
 }
+
 
 
 
