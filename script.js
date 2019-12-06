@@ -25,7 +25,6 @@ document.addEventListener("keyup", pressOff);
 function moveLines() {
       let lines = document.querySelectorAll(".line");
       lines.forEach(function (item) {
-      console.log(item.y);
       if (item.y >= 1000) {
           item.y -= 1000;
       }
@@ -34,7 +33,6 @@ function moveLines() {
       })
       let lines2 = document.querySelectorAll(".line2");
       lines2.forEach(function (item) {
-      console.log(item.y);
       if (item.y >= 1000) {
           item.y -= 1000;
       }
@@ -46,7 +44,6 @@ function moveLines() {
   function movePotholes() {
         let potholes = document.querySelectorAll(".potholes");
         potholes.forEach(function (item) {
-        console.log(item.y);
         if (item.y >= 1500) {
             item.y -= 1500;
         }
@@ -62,7 +59,6 @@ function playGame() {
     movePotholes();
     let road = gameArea.getBoundingClientRect();
     if(player.start) {
-      console.log(road, player)
         if (keys.ArrowUp && player.y > road.top){
           player.y -= player.speed;
         } if (keys.ArrowDown && player.y < 800){
@@ -81,14 +77,12 @@ function playGame() {
 function pressOn(e) {
     e.preventDefault();
     keys[e.key] = true;
-    console.log(keys);
 }
 
 
 function pressOff(e) {
     e.preventDefault();
     keys[e.key] = false;
-    console.log(keys);
 }
 
 function start(){
@@ -116,9 +110,8 @@ function start(){
   gameArea.appendChild(car);
   player.x = car.offsetLeft;
   player.y = car.offsetTop;
-  for(let x=0; x<7; x++){
-    let rando = (Math.floor(Math.random()*10));
-    if (rando % 3 === 0){
+  for(let x=0; x<10; x++){
+      console.log(x);
       let div = document.createElement('div');
       div.classList.add("potholes");
       div.y= x*500;
@@ -126,7 +119,6 @@ function start(){
       gameArea.appendChild(div);
     }
   }
-}
 
 
 
