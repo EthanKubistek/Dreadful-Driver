@@ -11,7 +11,8 @@ button.addEventListener("click",start);
 
 
 let player = {
-  speed: 5
+  speed: 4
+  , potholeSpeed: 2
 };
 let keys = {
     ArrowUp: false,
@@ -44,8 +45,8 @@ function moveLines() {
   function movePotholes() {
         let potholes = document.querySelectorAll(".potholes");
         potholes.forEach(function (item) {
-        if (item.y >= 1500) {
-            item.y -= 1500;
+        if (item.y >= 2000) {
+            item.y -= 2000;
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
@@ -105,17 +106,17 @@ function start(){
   }
   window.requestAnimationFrame(playGame);
   let car = document.createElement("div");
-  car.innerText= "car";
   car.setAttribute("class","car");
   gameArea.appendChild(car);
   player.x = car.offsetLeft;
   player.y = car.offsetTop;
-  for(let x=0; x<10; x++){
-      console.log(x);
+  for(let x=0; x<7; x++){
       let div = document.createElement('div');
       div.classList.add("potholes");
-      div.y= x*500;
+      div.y= (x*500);
+      console.log(div.y);
       div.style.top = (x*150) + "px";
+      div.style.left = (Math.floor(Math.random()*100)- 12) +"%";
       gameArea.appendChild(div);
     }
   }
