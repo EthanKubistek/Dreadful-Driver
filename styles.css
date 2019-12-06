@@ -35,9 +35,9 @@ button {
 }
 .car {
   position: absolute;
-  background-color: white;
-  height: 7em;
-  width: 5em;
+  background-image:url('CAR.png');
+  width: 100px;
+  height: 180px;
   position: absolute;
   bottom: 2em;
   z-index: 1;
