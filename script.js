@@ -65,7 +65,7 @@ function playGame() {
       console.log(road, player)
         if (keys.ArrowUp && player.y > road.top){
           player.y -= player.speed;
-        } if (keys.ArrowDown && player.y < road.bottom){
+        } if (keys.ArrowDown && player.y < 800){
           player.y += player.speed;
         } if (keys.ArrowLeft && player.x > 0) {
             player.x -= player.speed;
@@ -117,11 +117,14 @@ function start(){
   player.x = car.offsetLeft;
   player.y = car.offsetTop;
   for(let x=0; x<7; x++){
-    let div = document.createElement('div');
-    div.classList.add("potholes");
-    div.y= x*150;
-    div.style.top = (x*150) + "px";
-    gameArea.appendChild(div);
+    let rando = (Math.floor(Math.random()*10));
+    if (rando % 3 === 0){
+      let div = document.createElement('div');
+      div.classList.add("potholes");
+      div.y= x*500;
+      div.style.top = (x*150) + "px";
+      gameArea.appendChild(div);
+    }
   }
 }
 
