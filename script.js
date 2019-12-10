@@ -1,22 +1,25 @@
-
 /* story 1 seeing car and obstacles on the road*/
 const mileadge = document.querySelector(".mileadge");
 const startScreen = document.querySelector(".startScreen");
 const gameArea = document.querySelector(".gameArea");
 const deathScreen = document.querySelector(".deathScreen");
 
+const startTime = Date.now();
+
+
 const button = document.querySelector(".start");
 button.addEventListener("click",start);
 
 const restart = document.querySelector(".respawn");
 restart.addEventListener("click",reload);
+let position = [10, 15, 20, 30, 45, 50, 55, 60, 70, 80];
+
 function reload() {
   window.location.reload();
 }
 
 let player = {
   speed: 4
-  , potholeSpeed: 2
 };
 let keys = {
     ArrowUp: false,
@@ -65,8 +68,21 @@ function movePotholes() {
 }
 
 
-
+let go = Date.now();
 function playGame() {
+  let timePassed = -(Math.floor((go-Date.now())/1000));
+      if (timePassed > 4){
+        for(let x=0; x<1; x++){
+            let old = document.querySelector(".potholes");
+            let div = document.createElement('div');
+            div.classList.add("potholes");
+            div.y= (x*10);
+            div.style.top = (x*10) + "px";
+            div.style.left = position[(Math.floor(Math.random()*10))] + "%";
+            gameArea.replaceChild(div, old);
+            go= Date.now();
+          }
+      }
     let car = document.querySelector(".car");
     moveLines();
     movePotholes();
@@ -116,14 +132,12 @@ function start(){
     div.style.top = (x*150) + "px";
     gameArea.appendChild(div);
   }
-  for(let x=0; x<3; x++){
-      let div = document.createElement('div');
-      div.classList.add("potholes");
-      div.y= (x*500);
-      div.style.top = (x*150) + "px";
-      div.style.left = (Math.floor(Math.random()*100)) + "%";
-      gameArea.appendChild(div);
-    }
+  let div = document.createElement('div');
+  div.classList.add("potholes");
+  div.y= 10;
+  div.style.top =10 + "px";
+  div.style.left = position[(Math.floor(Math.random()*10))] + "%";
+  gameArea.appendChild(div);
   window.requestAnimationFrame(playGame);
   let car = document.createElement("div");
   car.setAttribute("class","car");
