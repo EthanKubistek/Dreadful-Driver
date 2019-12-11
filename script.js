@@ -14,7 +14,7 @@ button.addEventListener("click",start);
 const restart = document.querySelector(".respawn");
 restart.addEventListener("click",reload);
 let position = [10, 15, 20, 30, 45, 50, 55, 60, 70, 80];
-
+let miles =0;
 function reload() {
   window.location.reload();
 }
@@ -48,25 +48,26 @@ function moveLines() {
   }
 
 function movePotholes() {
-        let potholes = document.querySelectorAll(".potholes");
-        potholes.forEach(function (item) {
+    let potholes = document.querySelectorAll(".potholes");
+    potholes.forEach(function (item) {
         if (item.y >= window.innerHeight) {
             item.y -= window.innerHeight;
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
-      });
-      let car = document.querySelector(".car");
-      potholes.forEach(function (item) {
-              if (isCollide (car, item)) {
-                gameArea.classList.add("hide");
-                deathScreen.classList.remove("hide");
-      }
-  });
+        });
+    let car = document.querySelector(".car");
+    potholes.forEach(function (item) {
+         if (isCollide (car, item)) {
+            gameArea.classList.add("hide");
+            deathScreen.classList.remove("hide");
+          }
+        });
 }
 
 let goFast = Date.now();
 let go = Date.now();
+
 function playGame() {
   let old = document.querySelector(".potholes");
     if (old.y > (Math.max(500,window.innerHeight))){
@@ -77,85 +78,86 @@ function playGame() {
           div.style.top = (x*10) + "px";
           div.style.left = position[(Math.floor(Math.random()*10))] + "%";
           gameArea.replaceChild(div, old);
-        }
+          miles++;
+          console.log("YOU HAVE GONE " + miles+ " MILES");
+      }
     }
-    let car = document.querySelector(".car");
-    moveLines();
-    movePotholes();
-    if (player.speed < 25){
-      let elapsed = -(goFast-Date.now());
+  let car = document.querySelector(".car");
+  moveLines();
+  movePotholes();
+  if (player.speed < 25){
+    let elapsed = -(goFast-Date.now());
         if (elapsed > player.delay){
-          player.speed = player.speed + 1;
-          player.delay = player.delay - 100;
+          player.speed++;
+          player.delay-=100;
           goFast = Date.now();
           }
-    } else {
-      player.speed = 25;
-      player.delay = 1250;
-    }
-    let road = gameArea.getBoundingClientRect();
+  } else {
+    player.speed = 25;
+    player.delay = 1250;
+  }
+  let road = gameArea.getBoundingClientRect();
     if(player.start) {
         if (keys.ArrowUp && player.y > road.top){
           player.y -= player.speed;
-        } if (keys.ArrowDown && player.y < 800){
+        } else if (keys.ArrowDown && player.y < 800){
           player.y += player.speed;
-        } if (keys.ArrowLeft && player.x > 0) {
+        } else if (keys.ArrowLeft && player.x > 0) {
             player.x -= player.speed;
-        } if (keys.ArrowRight && player.x < 565){
+        } else if (keys.ArrowRight && player.x < 565){
             player.x += player.speed;
+        }
+    car.style.left = player.x + "px";
+    car.style.top = player.y + "px";
+    window.requestAnimationFrame(playGame);
     }
-        car.style.left = player.x + "px";
-        car.style.top = player.y + "px";
-        window.requestAnimationFrame(playGame);
-    }
-  }
-
-function pressOn(e) {
-    e.preventDefault();
-    keys[e.key] = true;
 }
 
+function pressOn(e) {
+  e.preventDefault();
+  keys[e.key] = true;
+}
 
 function pressOff(e) {
-    e.preventDefault();
-    keys[e.key] = false;
+  e.preventDefault();
+  keys[e.key] = false;
 }
 
 function start(){
-  startScreen.classList.add("hide");
-  gameArea.classList.remove("hide");
-  player.start=true;
-  for(let x=0; x<7; x++){
+    startScreen.classList.add("hide");
+    gameArea.classList.remove("hide");
+    player.start=true;
+      for(let x=0; x<7; x++){
+        let div = document.createElement('div');
+        div.classList.add("line");
+        div.y= x*150;
+        div.style.top = (x*150) + "px";
+        gameArea.appendChild(div);
+      }
+      for(let x=0; x<7; x++){
+        let div = document.createElement('div');
+        div.classList.add("line2");
+        div.y= x*150;
+        div.style.top = (x*150) + "px";
+        gameArea.appendChild(div);
+      }
     let div = document.createElement('div');
-    div.classList.add("line");
-    div.y= x*150;
-    div.style.top = (x*150) + "px";
+    div.classList.add("potholes");
+    div.y= 10;
+    div.style.top =10 + "px";
+    div.style.left = position[(Math.floor(Math.random()*10))] + "%";
     gameArea.appendChild(div);
-  }
-  for(let x=0; x<7; x++){
-    let div = document.createElement('div');
-    div.classList.add("line2");
-    div.y= x*150;
-    div.style.top = (x*150) + "px";
-    gameArea.appendChild(div);
-  }
-  let div = document.createElement('div');
-  div.classList.add("potholes");
-  div.y= 10;
-  div.style.top =10 + "px";
-  div.style.left = position[(Math.floor(Math.random()*10))] + "%";
-  gameArea.appendChild(div);
-  window.requestAnimationFrame(playGame);
-  let car = document.createElement("div");
-  car.setAttribute("class","car");
-  gameArea.appendChild(car);
-  player.x = car.offsetLeft;
-  player.y = car.offsetTop;
-  }
+    window.requestAnimationFrame(playGame);
+    let car = document.createElement("div");
+    car.setAttribute("class","car");
+    gameArea.appendChild(car);
+    player.x = car.offsetLeft;
+    player.y = car.offsetTop;
+}
 
-  function isCollide(a, b) {
-            let aRect = a.getBoundingClientRect();
-            let bRect = b.getBoundingClientRect();
-            return !(
-                (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
-        }
+function isCollide(a, b) {
+  let aRect = a.getBoundingClientRect();
+  let bRect = b.getBoundingClientRect();
+  return !(
+      (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
+};
