@@ -69,7 +69,15 @@ button {
 
 .potholes {
   position: absolute;
-  left: 10%;
+  height: 7em;
+  width: 7em;
+  background: radial-gradient(#000101, #9A9c9c);
+  border: 3px solid darkgrey;
+  border-radius: 50%;
+}
+
+.potholes2 {
+  position: absolute;
   height: 5em;
   width: 5em;
   background: radial-gradient(#000101, #9A9c9c);
