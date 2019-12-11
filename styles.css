@@ -84,3 +84,16 @@ button {
   border: 3px solid darkgrey;
   border-radius: 50%;
 }
+.mileadge {
+  position:absolute;
+  padding: 1em;
+  left: 1em;
+  top: 50%;
+  height: auto;
+  width: auto;
+  border: 3px solid white;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
