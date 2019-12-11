@@ -3,8 +3,10 @@ const startScreen = document.querySelector(".startScreen");
 const gameArea = document.querySelector(".gameArea");
 const deathScreen = document.querySelector(".deathScreen");
 
-const startTime = Date.now();
-
+let player = {
+  speed: 5,
+  delay: 3000
+};
 
 const button = document.querySelector(".start");
 button.addEventListener("click",start);
@@ -17,9 +19,6 @@ function reload() {
   window.location.reload();
 }
 
-let player = {
-  speed: 4
-};
 let keys = {
     ArrowUp: false,
     ArrowDown: false,
@@ -32,16 +31,16 @@ document.addEventListener("keyup", pressOff);
 function moveLines() {
       let lines = document.querySelectorAll(".line");
       lines.forEach(function (item) {
-      if (item.y >= 1000) {
-          item.y -= 1000;
+      if (item.y >= window.innerHeight) {
+          item.y -= window.innerHeight;
       }
       item.y += player.speed;
       item.style.top = item.y + "px";
       })
       let lines2 = document.querySelectorAll(".line2");
       lines2.forEach(function (item) {
-      if (item.y >= 1000) {
-          item.y -= 1000;
+      if (item.y >= window.innerHeight) {
+          item.y -= window.innerHeight;
       }
       item.y += player.speed;
       item.style.top = item.y + "px";
@@ -51,8 +50,8 @@ function moveLines() {
 function movePotholes() {
         let potholes = document.querySelectorAll(".potholes");
         potholes.forEach(function (item) {
-        if (item.y >= 1000) {
-            item.y -= 1000;
+        if (item.y >= window.innerHeight) {
+            item.y -= window.innerHeight;
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
@@ -66,25 +65,34 @@ function movePotholes() {
   });
 }
 
-
+let goFast = Date.now();
 let go = Date.now();
 function playGame() {
-  let timePassed = -(Math.floor((go-Date.now())/1000));
-      if (timePassed > 4){
-        for(let x=0; x<1; x++){
-            let old = document.querySelector(".potholes");
-            let div = document.createElement('div');
-            div.classList.add("potholes");
-            div.y= (x*10);
-            div.style.top = (x*10) + "px";
-            div.style.left = position[(Math.floor(Math.random()*10))] + "%";
-            gameArea.replaceChild(div, old);
-            go= Date.now();
-          }
-      }
+  let old = document.querySelector(".potholes");
+    if (old.y > (Math.max(500,window.innerHeight))){
+      for(let x=0; x<1; x++){
+          let div = document.createElement('div');
+          div.classList.add("potholes");
+          div.y= 10;
+          div.style.top = (x*10) + "px";
+          div.style.left = position[(Math.floor(Math.random()*10))] + "%";
+          gameArea.replaceChild(div, old);
+        }
+    }
     let car = document.querySelector(".car");
     moveLines();
     movePotholes();
+    if (player.speed < 25){
+      let elapsed = -(goFast-Date.now());
+        if (elapsed > player.delay){
+          player.speed = player.speed + 1;
+          player.delay = player.delay - 100;
+          goFast = Date.now();
+          }
+    } else {
+      player.speed = 25;
+      player.delay = 1250;
+    }
     let road = gameArea.getBoundingClientRect();
     if(player.start) {
         if (keys.ArrowUp && player.y > road.top){
