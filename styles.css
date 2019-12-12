@@ -93,21 +93,32 @@ button {
   z-index: 1;
 }
 .deathScreen {
-  font-size: 4em;
   text-align: center;
   color: white;
-  margin-top: 1em;
 }
 .respawn {
-  font-size: 1em;
+  font-size: 2em;
 }
 .intro {
   font-size: 2em;
   text-align: center;
   color: white;
+  background-color: darkgreen;
+  border: 1px solid white;
+  padding: 1.5em;
+  margin-bottom: 2em;
 }
 #result {
+  font-size: 5em;
   color: yellow;
   text-transform: uppercase;
   font-style: italic;
+}
+
+.wow {
+  background-color: #F05A0F;
+  border: 1px solid white;
+  padding: 1em;
+  font-size: 3em;
+  font-family: serif;
 }

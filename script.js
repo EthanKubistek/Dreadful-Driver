@@ -66,7 +66,7 @@ function movePotholes() {
             deathScreen.classList.remove("hide");
             mileadge.style.display= "none";
             let result = document.getElementById("result");
-            result.innerText = miles + ' miles...';
+            result.innerText = miles + ' miles';
           }
         });
 }
