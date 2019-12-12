@@ -86,6 +86,7 @@ button {
 }
 .mileadge {
   position:absolute;
+  font-size: 3em;
   padding: 1em;
   left: 1em;
   top: 50%;
@@ -94,6 +95,19 @@ button {
   border: 3px solid white;
   background-color: black;
   color: white;
-  font-size: 2em;
   text-align: center;
+}
+.deathScreen {
+  font-size: 4em;
+  text-align: center;
+  color: white;
+  margin-top: 1em;
+}
+.respawn {
+  font-size: 1em;
+}
+#result {
+  color: yellow;
+  text-transform: uppercase;
+  font-style: italic;
 }

@@ -6,7 +6,8 @@ const deathScreen = document.querySelector(".deathScreen");
 
 let player = {
   speed: 5,
-  delay: 3000
+  delay: 3000,
+  safe: true
 };
 
 const button = document.querySelector(".start");
@@ -60,8 +61,13 @@ function movePotholes() {
     let car = document.querySelector(".car");
     potholes.forEach(function (item) {
          if (isCollide (car, item)) {
+            player.safe = false;
+            console.log(player.safe);
             gameArea.classList.add("hide");
             deathScreen.classList.remove("hide");
+            mileadge.style.display= "none";
+            let result = document.getElementById("result");
+            result.innerText = miles + ' miles...';
           }
         });
 }
@@ -70,6 +76,7 @@ let goFast = Date.now();
 let go = Date.now();
 
 function playGame() {
+if (player.safe == true) {
   let old = document.querySelector(".potholes");
     if (old.y > (Math.max(500,window.innerHeight))){
       for(let x=0; x<1; x++){
@@ -81,10 +88,11 @@ function playGame() {
           gameArea.replaceChild(div, old);
           miles++;
           mileadge.textContent = miles + " MILES";
-          console.log("YOU HAVE GONE " + miles+ " MILES");
+          console.log( miles);
       }
     }
   let car = document.querySelector(".car");
+
   moveLines();
   movePotholes();
   if (player.speed < 25){
@@ -98,6 +106,7 @@ function playGame() {
     player.speed = 25;
     player.delay = 1250;
   }
+
   let road = gameArea.getBoundingClientRect();
     if(player.start) {
         if (keys.ArrowUp && player.y > road.top){
@@ -111,8 +120,12 @@ function playGame() {
         }
     car.style.left = player.x + "px";
     car.style.top = player.y + "px";
+
     window.requestAnimationFrame(playGame);
-    }
+  }
+} else if (player.safe == false) {
+  console.log("iufghbjgharfgaskdf");
+}
 }
 
 function pressOn(e) {
