@@ -22,6 +22,7 @@ h1 {
   text-align: center;
   font-size: 9em;
   font-family: sans-serif;
+  font-style: italic;
 }
 button {
   background-color: red;
@@ -41,13 +42,14 @@ button {
   bottom: 2em;
   z-index: 1;
 }
+
 .gameArea {
   position: absolute;
   justify-content: center;
   margin: auto;
   border-left: 5px solid lightgrey;
   border-right: 5px solid lightgrey;
-  background-color: black;
+  background-color: #151919;
   width: 40em;
   height: 100%;
   margin: auto;
@@ -71,31 +73,24 @@ button {
   position: absolute;
   height: 7em;
   width: 7em;
-  background: radial-gradient(#000101, #9A9c9c);
-  border: 3px solid darkgrey;
+  background: radial-gradient(#000101, #4B5555);
+  border: 3px solid #4B5555;
   border-radius: 50%;
 }
 
-.potholes2 {
-  position: absolute;
-  height: 5em;
-  width: 5em;
-  background: radial-gradient(#000101, #9A9c9c);
-  border: 3px solid darkgrey;
-  border-radius: 50%;
-}
 .mileadge {
   position:absolute;
-  font-size: 3em;
+  font-size: 2em;
   padding: 1em;
   left: 1em;
-  top: 50%;
+  top: 35%;
   height: auto;
   width: auto;
   border: 3px solid white;
   background-color: black;
   color: white;
   text-align: center;
+  z-index: 1;
 }
 .deathScreen {
   font-size: 4em;
@@ -105,6 +100,11 @@ button {
 }
 .respawn {
   font-size: 1em;
+}
+.intro {
+  font-size: 2em;
+  text-align: center;
+  color: white;
 }
 #result {
   color: yellow;

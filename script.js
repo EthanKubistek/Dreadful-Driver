@@ -87,7 +87,7 @@ if (player.safe == true) {
           div.style.left = position[(Math.floor(Math.random()*10))] + "%";
           gameArea.replaceChild(div, old);
           miles++;
-          mileadge.textContent = miles + " MILES";
+          mileadge.textContent = "MILES DRIVEN: "+ miles ;
           console.log( miles);
       }
     }
@@ -164,6 +164,7 @@ function start(){
     div.style.top =10 + "px";
     div.style.left = position[(Math.floor(Math.random()*10))] + "%";
     gameArea.appendChild(div);
+
     window.requestAnimationFrame(playGame);
     let car = document.createElement("div");
     car.setAttribute("class","car");
@@ -175,5 +176,5 @@ function isCollide(a, b) {
   let aRect = a.getBoundingClientRect();
   let bRect = b.getBoundingClientRect();
   return !(
-      (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right))
-};
+      (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right));
+}
