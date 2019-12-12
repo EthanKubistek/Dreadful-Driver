@@ -110,7 +110,7 @@ function playGame() {
         }
     car.style.left = player.x + "px";
     car.style.top = player.y + "px";
-    window.requestAnimationFrame(playGame);
+      window.requestAnimationFrame(playGame);
     }
 }
 
